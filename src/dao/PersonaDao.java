@@ -1,5 +1,7 @@
 package dao;
 
+// No quise pisar este code, pero creo que podriamos usar lo mismo que la profe y fue.
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
