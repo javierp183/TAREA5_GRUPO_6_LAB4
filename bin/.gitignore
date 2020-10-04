@@ -1,4 +1,4 @@
+/presentacion/
 /dao/
-/daoImpl/
-/negocioImpl/
-/negocio/
+/entidad/
+/main/
