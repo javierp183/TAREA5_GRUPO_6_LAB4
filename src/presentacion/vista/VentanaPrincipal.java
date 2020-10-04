@@ -74,9 +74,35 @@ public class VentanaPrincipal extends JFrame {
 
 		JMenuItem mntmModificarPersona = new JMenuItem("Modificar");
 		mnPersonas.add(mntmModificarPersona);
+		mntmModificarPersona.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+			contentPane.removeAll();
+			//Abre el formulario Panel Eliminar Persona dentro de la ventana principal
+			PanelListarPersonas panel = new PanelListarPersonas();
+			System.out.println("nuevo objeto panel Modificar");
+			contentPane.add(panel);
+			contentPane.repaint();
+			contentPane.revalidate();
+		}
+		
+	});
 
 		JMenuItem mntmListarPersonas = new JMenuItem("Listar");
 		mnPersonas.add(mntmListarPersonas);
+		mntmListarPersonas.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+			contentPane.removeAll();
+			//Abre el formulario Panel Eliminar Persona dentro de la ventana principal
+			PanelListarPersonas panel = new PanelListarPersonas();
+			System.out.println("nuevo objeto panel Listar");
+			contentPane.add(panel);
+			contentPane.repaint();
+			contentPane.revalidate();
+		}
+		
+	});
 
 //		contentPane = new JPanel();
 //		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
