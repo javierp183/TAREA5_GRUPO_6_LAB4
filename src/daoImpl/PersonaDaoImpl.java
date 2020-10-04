@@ -13,8 +13,8 @@ import entidad.Persona;
 
 public class PersonaDaoImpl implements PersonaDao
 {
-	private static final String insert = "INSERT INTO personas(idPersona, dni, nombre, apellido) VALUES(?, ?, ?, ?)";
-	private static final String delete = "DELETE FROM personas WHERE idPersona = ?";
+	private static final String insert = "INSERT INTO personas(dni, nombre, apellido) VALUES(?, ?, ?)";
+	private static final String delete = "DELETE FROM personas WHERE dni = ?";
 	private static final String readall = "SELECT * FROM personas";
 		
 	public boolean insert(Persona persona)
