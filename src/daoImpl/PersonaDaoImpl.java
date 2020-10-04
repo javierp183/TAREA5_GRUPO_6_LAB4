@@ -25,9 +25,9 @@ public class PersonaDaoImpl implements PersonaDao
 		try
 		{
 			statement = conexion.prepareStatement(insert);
-			statement.setInt(1, persona.getIdPersona());
+			statement.setString(1, persona.getDni());
 			statement.setString(2, persona.getNombre());
-			statement.setString(3, persona.getTelefono());
+			statement.setString(3, persona.getApellido());
 			if(statement.executeUpdate() > 0)
 			{
 				conexion.commit();
@@ -55,7 +55,7 @@ public class PersonaDaoImpl implements PersonaDao
 		try 
 		{
 			statement = conexion.prepareStatement(delete);
-			statement.setString(1, Integer.toString(persona_a_eliminar.getIdPersona()));
+			statement.setString(1, persona_a_eliminar.getDni());
 			if(statement.executeUpdate() > 0)
 			{
 				conexion.commit();
@@ -93,9 +93,9 @@ public class PersonaDaoImpl implements PersonaDao
 	
 	private Persona getPersona(ResultSet resultSet) throws SQLException
 	{
-		int id = resultSet.getInt("idPersona");
+		String dni = resultSet.getString("Dni");
 		String nombre = resultSet.getString("Nombre");
-		String tel = resultSet.getString("Telefono");
-		return new Persona(id, nombre, tel);
+		String apellido = resultSet.getString("Apellido");
+		return new Persona(dni, nombre, apellido);
 	}
 }

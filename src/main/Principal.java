@@ -2,19 +2,20 @@ package main;
 
 import dao.PersonaDao;
 import entidad.Persona;
+import presentacion.vista.VentanaPrincipal;
 
 public class Principal {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		PersonaDao personaDao = new PersonaDao();
-		
-		Persona persona1 = new Persona();
-		persona1.setDni("3884573");
-		persona1.setNombre("Gyro");
-		persona1.setApellido("Zeppeli");
-		
+//		PersonaDao personaDao = new PersonaDao();
+//		
+//		Persona persona1 = new Persona();
+//		persona1.setDni("3884573");
+//		persona1.setNombre("Gyro");
+//		persona1.setApellido("Zeppeli");
+//		
 		/* int filas = personaDao.agregarPersona(persona1);
 		
 		if(filas==1) System.out.println("Personas Agregada");
@@ -35,6 +36,13 @@ public class Principal {
 			System.out.println("Personas No Modificada");
 			
 			*/
+		
+		try {
+			VentanaPrincipal frame = new VentanaPrincipal();
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

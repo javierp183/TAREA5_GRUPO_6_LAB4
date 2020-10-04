@@ -9,25 +9,28 @@ import negocio.PersonaNegocio;
 
 public class PersonaNegocioImpl implements PersonaNegocio{
 
-	PersonaDao pdao = new PersonaDaoImpl();
+	PersonaDaoImpl pdao = new PersonaDaoImpl();
+	private int estado;
 	
 	@Override
-	public boolean insert(Persona persona) {
+	public int insert(Persona persona) {
 		
-		boolean estado=false;
-		if(persona.getNombre().trim().length()>0 && persona.getTelefono().trim().length()>0)
+		if(persona.getNombre().trim().length()>0 && persona.getDni().trim().length()>0 && persona.getApellido().trim().length()>0)
 		{
-			estado=pdao.insert(persona);
+			estado=pdao.agregarPersona(persona);
+			return estado;
 		}
-		return estado;
+		else
+		{
+			return -1;
+		}
 	}
 
 	@Override
-	public boolean delete(Persona persona_a_eliminar) {
-		boolean estado=false;
-		if(persona_a_eliminar.getIdPersona()>0 )//Tambi�n se puede preguntar si existe ese ID 
+	public int delete(Persona persona_a_eliminar) {
+		if(persona_a_eliminar.getDni() != null )//Tambi�n se puede preguntar si existe ese ID 
 		{
-			estado=pdao.delete(persona_a_eliminar);
+			estado=pdao.borrarPersona(persona_a_eliminar);
 		}
 		return estado;
 	}
