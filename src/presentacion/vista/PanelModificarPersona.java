@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -65,5 +66,10 @@ public class PanelModificarPersona extends JPanel {
 		lblDni.setBounds(256, 167, 46, 14);
 		panel.add(lblDni);
 
+	}
+	
+	public void mostrarMensaje(String mensaje)
+	{
+		JOptionPane.showMessageDialog(null, mensaje);
 	}
 }

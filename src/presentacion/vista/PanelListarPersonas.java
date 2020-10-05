@@ -5,6 +5,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTree;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class PanelListarPersonas extends JPanel {
 	private JTable table;
@@ -27,5 +28,10 @@ public class PanelListarPersonas extends JPanel {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 
+	}
+	
+	public void mostrarMensaje(String mensaje)
+	{
+		JOptionPane.showMessageDialog(null, mensaje);
 	}
 }
