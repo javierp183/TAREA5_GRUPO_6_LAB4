@@ -15,26 +15,47 @@ public class PersonaNegocioImpl implements PersonaNegocio{
 	@Override
 	public boolean insert(Persona persona) {
 		
-		if(persona.getNombre().trim().length()>0 && persona.getDni().trim().length()>0 && persona.getApellido().trim().length()>0)
-		{
-			estado=pdao.insert(persona);
-			return estado;
-		}
-		else
-		{
+		try {
+			
+			if(persona.getNombre().trim().length()>0 && persona.getDni().trim().length()>0 && persona.getApellido().trim().length()>0)
+			{
+				estado=pdao.insert(persona);
+				return estado;
+			}
+			else
+			{
+				return false;
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
 			return false;
 		}
 	}
 
+	
+	
+	@Override
+	public boolean modify(Persona persona) {
+		return pdao.modify(persona);
+	}
+
+
+
 	@Override
 	public boolean delete(Persona persona_a_eliminar) {
-		if(persona_a_eliminar.getDni() != null )//Tambi�n se puede preguntar si existe ese ID 
-		{
-			estado=pdao.delete(persona_a_eliminar);
-			return estado;
-		}
-		else
-		{
+		try {
+			if(persona_a_eliminar.getDni() != null )//Tambi�n se puede preguntar si existe ese ID 
+			{
+				estado=pdao.delete(persona_a_eliminar);
+				return estado;
+			}
+			else
+			{
+				return false;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
 			return false;
 		}
 	}
