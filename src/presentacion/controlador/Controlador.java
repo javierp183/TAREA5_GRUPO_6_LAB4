@@ -13,6 +13,7 @@ import presentacion.vista.PanelEliminarPersona;
 import presentacion.vista.PanelListarPersonas;
 import presentacion.vista.PanelModificarPersona;
 import presentacion.vista.VentanaPrincipal;
+import presentacion.vista.pAgregar;
 
 public class Controlador implements ActionListener {
 
@@ -21,6 +22,7 @@ public class Controlador implements ActionListener {
 	private PanelEliminarPersona pep;
 	private PanelListarPersonas plp;
 	private PanelModificarPersona pmp;
+	private pAgregar Agregar;
 	private PersonaNegocio pNeg;
 
 		public Controlador(VentanaPrincipal vp, PersonaNegocio pNeg) {
@@ -32,8 +34,10 @@ public class Controlador implements ActionListener {
 			this.pep = new PanelEliminarPersona();
 			this.plp = new PanelListarPersonas();
 			this.pmp = new PanelModificarPersona();
+			this.Agregar = new pAgregar();
 			
 			//Eventos del menu del frame de VentanaPrincipal (del jmenu)
+			
 			this.vp.getMntmAgregar().addActionListener(a->EventoClickMenu_AbrirPanel_AgregarPersona(a));
 			this.vp.getMntmEliminar().addActionListener(a->EventoClickMenu_AbrirPanel_EliminarPersona(a));
 			this.vp.getMntmModificar().addActionListener(a->EventoClickMenu_AbrirPanel_ModificarPersona(a));
@@ -73,7 +77,7 @@ public class Controlador implements ActionListener {
 		private void EventoClickMenu_AbrirPanel_AgregarPersona(ActionEvent a) {
 			// TODO Auto-generated method stub
 			vp.getContentPane().removeAll();
-			vp.getContentPane().add(pap);
+			vp.getContentPane().add(Agregar);
 			vp.getContentPane().repaint();
 			vp.getContentPane().revalidate();
 			

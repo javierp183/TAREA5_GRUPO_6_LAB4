@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
-import clases.Peliculas;
 import entidad.Persona;
 import negocio.PersonaNegocio;
 
@@ -16,6 +15,9 @@ import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class PanelEliminarPersona extends JPanel {
 
@@ -34,32 +36,48 @@ public class PanelEliminarPersona extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 450, 300);
 		add(panel);
-		panel.setLayout(null);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{87, 258, 0};
+		gbl_panel.rowHeights = new int[]{61, 14, 130, 23, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
 		
 		JLabel lblEliminarUsuarios = new JLabel("Eliminar usuarios");
-		lblEliminarUsuarios.setBounds(171, 61, 79, 14);
-		panel.add(lblEliminarUsuarios);
+		GridBagConstraints gbc_lblEliminarUsuarios = new GridBagConstraints();
+		gbc_lblEliminarUsuarios.anchor = GridBagConstraints.NORTH;
+		gbc_lblEliminarUsuarios.insets = new Insets(0, 0, 5, 0);
+		gbc_lblEliminarUsuarios.gridx = 1;
+		gbc_lblEliminarUsuarios.gridy = 1;
+		panel.add(lblEliminarUsuarios, gbc_lblEliminarUsuarios);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(87, 90, 258, 130);
-		panel.add(scrollPane);
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.anchor = GridBagConstraints.NORTHWEST;
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane.gridx = 1;
+		gbc_scrollPane.gridy = 2;
+		panel.add(scrollPane, gbc_scrollPane);
 		
 		list = new JList<Persona>();
-		modelPersonas = new DefaultListModel();
-		List<Persona> lp = null;
-		lp = pNeg.readAll();
-		for (Persona item : lp) {
-			modelPersonas.addElement(item);
-		}
-		list.setModel(modelPersonas);
-		
-		
-		
-		scrollPane.setViewportView(list);
+		//		modelPersonas = new DefaultListModel();
+		//		List<Persona> lp = null;
+		//		lp = pNeg.readAll();
+		//		for (Persona item : lp) {
+		//			modelPersonas.addElement(item);
+		//		}
+		//		list.setModel(modelPersonas);
+				
+				
+				
+				scrollPane.setViewportView(list);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(171, 242, 89, 23);
-		panel.add(btnEliminar);
+		GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
+		gbc_btnEliminar.anchor = GridBagConstraints.NORTH;
+		gbc_btnEliminar.gridx = 1;
+		gbc_btnEliminar.gridy = 3;
+		panel.add(btnEliminar, gbc_btnEliminar);
 
 	}
 	
