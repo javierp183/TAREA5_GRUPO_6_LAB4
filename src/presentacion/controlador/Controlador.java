@@ -47,8 +47,12 @@ public class Controlador implements ActionListener {
 			//Evento del panel agregar personas
 			this.pap.getBtnAceptar().addActionListener(a->EventoClickBtn_PanelAgregarPersonas(a));
 			
+			//Eventos del panel Eliminar Personas
+			this.pep.getBtnEliminar().addActionListener(a->EventoClickBtnEliminar_PanelEliminarPersonas(a));
+			
 		}
 		
+
 		private void EventoClickBtn_PanelAgregarPersonas(ActionEvent a) {
 			
 			if(pap.getTxtApellido().getText().isEmpty()) {
@@ -123,6 +127,20 @@ public class Controlador implements ActionListener {
 			this.pep.setDefaultListModel(pNeg.readAllDFL());
 		}
 
+		private void EventoClickBtnEliminar_PanelEliminarPersonas(ActionEvent a) {
+			
+			Persona p = new Persona();
+			p = (Persona)this.pep.getList().getSelectedValue();
+			Boolean exito = pNeg.delete(p);
+			if(exito == true) {
+				this.pep.mostrarMensaje("Persona eliminada con éxito!");
+				this.RefreshTable();
+			}else {
+				this.pep.mostrarMensaje("Hubo un error, intente más tarde...");
+			}
+		}
+
+		
 		public void inicializar()
 		{
 			this.vp.setVisible(true);;

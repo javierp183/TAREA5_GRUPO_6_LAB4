@@ -40,7 +40,7 @@ public class PanelEliminarPersona extends JPanel {
 		panel.setLayout(null);
 		
 		JLabel lblEliminarUsuarios = new JLabel("Eliminar usuarios");
-		lblEliminarUsuarios.setBounds(171, 30, 98, 14);
+		lblEliminarUsuarios.setBounds(138, 31, 151, 14);
 		panel.add(lblEliminarUsuarios);
 		
 		btnEliminar = new JButton("Eliminar");
@@ -48,7 +48,7 @@ public class PanelEliminarPersona extends JPanel {
 		panel.add(btnEliminar);
 		
 		list_1 = new JList();
-		list_1.setBounds(83, 68, 271, 129);
+		list_1.setBounds(30, 75, 391, 129);
 		panel.add(list_1);
 
 	}
