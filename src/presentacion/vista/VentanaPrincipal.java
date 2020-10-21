@@ -12,27 +12,21 @@ import javax.swing.border.EmptyBorder;
 
 public class VentanaPrincipal extends JFrame {
 
-	private JPanel contentPane;
 	private JMenu mnPersonas;
 	private JMenuBar menuBar;
 	private JMenuItem menuAgregar;
 	private JMenuItem menuEliminar;
 	private JMenuItem menuModificar;
 	private JMenuItem menuListar;
-	/**
-	 * Launch the application.
-	 */
 
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 501, 370);
 		
 		menuBar = new JMenuBar();
-		getContentPane().add(menuBar, BorderLayout.NORTH);
+		setJMenuBar(menuBar);
+
 		
 		mnPersonas = new JMenu("Personas");
 		menuBar.add(mnPersonas);
@@ -48,21 +42,9 @@ public class VentanaPrincipal extends JFrame {
 		
 		menuListar = new JMenuItem("Listar");
 		mnPersonas.add(menuListar);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+
 	}
 	
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
 
 	public JMenu getMnPersonas() {
 		return mnPersonas;

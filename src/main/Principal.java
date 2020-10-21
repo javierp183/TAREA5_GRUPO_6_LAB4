@@ -1,7 +1,5 @@
 package main;
 
-import dao.PersonaDao;
-import entidad.Persona;
 import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
 import presentacion.controlador.Controlador;

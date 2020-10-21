@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import entidad.Persona;
 import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
 import presentacion.vista.PanelAgregarPersona;
@@ -13,7 +14,6 @@ import presentacion.vista.PanelEliminarPersona;
 import presentacion.vista.PanelListarPersonas;
 import presentacion.vista.PanelModificarPersona;
 import presentacion.vista.VentanaPrincipal;
-import presentacion.vista.pAgregar;
 
 public class Controlador implements ActionListener {
 
@@ -22,7 +22,6 @@ public class Controlador implements ActionListener {
 	private PanelEliminarPersona pep;
 	private PanelListarPersonas plp;
 	private PanelModificarPersona pmp;
-	private pAgregar Agregar;
 	private PersonaNegocio pNeg;
 
 		public Controlador(VentanaPrincipal vp, PersonaNegocio pNeg) {
@@ -34,7 +33,6 @@ public class Controlador implements ActionListener {
 			this.pep = new PanelEliminarPersona();
 			this.plp = new PanelListarPersonas();
 			this.pmp = new PanelModificarPersona();
-			this.Agregar = new pAgregar();
 			
 			//Eventos del menu del frame de VentanaPrincipal (del jmenu)
 			
@@ -44,9 +42,41 @@ public class Controlador implements ActionListener {
 			this.vp.getMntmListar().addActionListener(a->EventoClickMenu_AbrirPanel_ListarPersonas(a));
 			
 			//Evento del panel agregar personas
+			this.pap.getBtnAceptar().addActionListener(a->EventoClickBtn_PanelAgregarPersonas(a));
 			
 		}
 		
+		private void EventoClickBtn_PanelAgregarPersonas(ActionEvent a) {
+			
+			if(pap.getTxtApellido().getText().isEmpty()) {
+				pap.mostrarMensaje("Por favor, completar el Apellido.");
+			} else if( pap.getTxtDni().getText().isEmpty()) {
+				pap.mostrarMensaje("Por favor, completar el Dni.");
+
+			} else if( pap.getTxtNombre().getText().isEmpty()) {
+				pap.mostrarMensaje("Por favor, completar el Nombre.");
+			}else {
+				String Nombre = pap.getTxtNombre().getText();
+				String Apellido = pap.getTxtApellido().getText();
+				String Dni = pap.getTxtDni().getText();
+				
+				Persona p = new Persona(Dni,Nombre,Apellido);
+				boolean inserto = pNeg.insert(p);
+				if(inserto == true) {
+					pap.mostrarMensaje("Persona ingresada con éxito!");
+					
+					pap.getTxtApellido().setText("");
+					pap.getTxtDni().setText("");
+					pap.getTxtNombre().setText("");
+				}else {
+					pap.mostrarMensaje("Hubo un error, intente más tarde.");
+				}
+				
+			}
+				
+				
+		}
+
 		private void EventoClickMenu_AbrirPanel_ListarPersonas(ActionEvent a) {
 			// TODO Auto-generated method stub
 			vp.getContentPane().removeAll();
@@ -77,9 +107,10 @@ public class Controlador implements ActionListener {
 		private void EventoClickMenu_AbrirPanel_AgregarPersona(ActionEvent a) {
 			// TODO Auto-generated method stub
 			vp.getContentPane().removeAll();
-			vp.getContentPane().add(Agregar);
+			vp.getContentPane().add(pap);
 			vp.getContentPane().repaint();
 			vp.getContentPane().revalidate();
+			
 			
 		}
 

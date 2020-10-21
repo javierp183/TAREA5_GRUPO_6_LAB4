@@ -36,28 +36,15 @@ public class PanelEliminarPersona extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 450, 300);
 		add(panel);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{87, 258, 0};
-		gbl_panel.rowHeights = new int[]{61, 14, 130, 23, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
+		panel.setLayout(null);
 		
 		JLabel lblEliminarUsuarios = new JLabel("Eliminar usuarios");
-		GridBagConstraints gbc_lblEliminarUsuarios = new GridBagConstraints();
-		gbc_lblEliminarUsuarios.anchor = GridBagConstraints.NORTH;
-		gbc_lblEliminarUsuarios.insets = new Insets(0, 0, 5, 0);
-		gbc_lblEliminarUsuarios.gridx = 1;
-		gbc_lblEliminarUsuarios.gridy = 1;
-		panel.add(lblEliminarUsuarios, gbc_lblEliminarUsuarios);
+		lblEliminarUsuarios.setBounds(171, 30, 98, 14);
+		panel.add(lblEliminarUsuarios);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.anchor = GridBagConstraints.NORTHWEST;
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane.gridx = 1;
-		gbc_scrollPane.gridy = 2;
-		panel.add(scrollPane, gbc_scrollPane);
+		scrollPane.setBounds(88, 55, 258, 130);
+		panel.add(scrollPane);
 		
 		list = new JList<Persona>();
 		//		modelPersonas = new DefaultListModel();
@@ -70,14 +57,11 @@ public class PanelEliminarPersona extends JPanel {
 				
 				
 				
-				scrollPane.setViewportView(list);
+				scrollPane.setColumnHeaderView(list);
 		
 		btnEliminar = new JButton("Eliminar");
-		GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
-		gbc_btnEliminar.anchor = GridBagConstraints.NORTH;
-		gbc_btnEliminar.gridx = 1;
-		gbc_btnEliminar.gridy = 3;
-		panel.add(btnEliminar, gbc_btnEliminar);
+		btnEliminar.setBounds(181, 215, 88, 23);
+		panel.add(btnEliminar);
 
 	}
 	

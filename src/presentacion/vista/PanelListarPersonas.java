@@ -21,19 +21,11 @@ public class PanelListarPersonas extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 450, 300);
 		add(panel);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{68, 300, 0};
-		gbl_panel.rowHeights = new int[]{48, 187, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
+		panel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 1;
-		gbc_scrollPane.gridy = 1;
-		panel.add(scrollPane, gbc_scrollPane);
+		scrollPane.setBounds(71, 28, 300, 187);
+		panel.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
