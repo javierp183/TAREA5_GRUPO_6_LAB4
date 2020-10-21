@@ -18,14 +18,15 @@ import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.JScrollBar;
 
 public class PanelEliminarPersona extends JPanel {
 
-	private DefaultListModel modelPersonas;
+	private DefaultListModel<Persona> listModel;
 	private String[] nombreColumnas = {"Nombre y apellido","Dni"};
-	private JList list;
 	private JButton btnEliminar;
 	private PersonaNegocio pNeg;
+	private JList<Persona> list_1;
 
 	/**
 	 * Create the panel.
@@ -42,31 +43,61 @@ public class PanelEliminarPersona extends JPanel {
 		lblEliminarUsuarios.setBounds(171, 30, 98, 14);
 		panel.add(lblEliminarUsuarios);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(88, 55, 258, 130);
-		panel.add(scrollPane);
-		
-		list = new JList<Persona>();
-		//		modelPersonas = new DefaultListModel();
-		//		List<Persona> lp = null;
-		//		lp = pNeg.readAll();
-		//		for (Persona item : lp) {
-		//			modelPersonas.addElement(item);
-		//		}
-		//		list.setModel(modelPersonas);
-				
-				
-				
-				scrollPane.setColumnHeaderView(list);
-		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setBounds(181, 215, 88, 23);
 		panel.add(btnEliminar);
+		
+		list_1 = new JList();
+		list_1.setBounds(83, 68, 271, 129);
+		panel.add(list_1);
 
+	}
+	
+
+
+	public void setDefaultListModel(DefaultListModel<Persona> listModelRecibido)
+	{
+		list_1.setModel(listModelRecibido);
+		
+		//FIXME: Hay que arreglar en el controlador o acá, cómo asignarle la lista de personas que viene
+		//De la DB para pasarlo al default list model..
+		
 	}
 	
 	public void mostrarMensaje(String mensaje)
 	{
 		JOptionPane.showMessageDialog(null, mensaje);
+	}
+
+	public DefaultListModel getModelPersonas() {
+		return listModel;
+	}
+
+	public void setModelPersonas(DefaultListModel modelPersonas) {
+		this.listModel = modelPersonas;
+	}
+
+	public String[] getNombreColumnas() {
+		return nombreColumnas;
+	}
+
+	public void setNombreColumnas(String[] nombreColumnas) {
+		this.nombreColumnas = nombreColumnas;
+	}
+
+	public JList getList() {
+		return list_1;
+	}
+
+	public void setList(JList<Persona> list) {
+		this.list_1 = list;
+	}
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public void setBtnEliminar(JButton btnEliminar) {
+		this.btnEliminar = btnEliminar;
 	}
 }

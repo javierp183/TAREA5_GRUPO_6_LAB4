@@ -2,6 +2,8 @@ package negocioImpl;
 
 import java.util.List;
 
+import javax.swing.DefaultListModel;
+
 import dao.PersonaDao;
 import daoImpl.PersonaDaoImpl;
 import entidad.Persona;
@@ -64,5 +66,13 @@ public class PersonaNegocioImpl implements PersonaNegocio{
 	public List<Persona> readAll() {
 		return pdao.readAll();
 	}
+
+
+	@Override
+	public DefaultListModel<Persona> readAllDFL() {
+		return pdao.readAllDFL();
+	}
+	
+	
 
 }

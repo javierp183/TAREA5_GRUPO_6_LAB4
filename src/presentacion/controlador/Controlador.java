@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import entidad.Persona;
@@ -23,6 +25,7 @@ public class Controlador implements ActionListener {
 	private PanelListarPersonas plp;
 	private PanelModificarPersona pmp;
 	private PersonaNegocio pNeg;
+	private JList<Persona> list;
 
 		public Controlador(VentanaPrincipal vp, PersonaNegocio pNeg) {
 			this.vp = vp;
@@ -101,6 +104,7 @@ public class Controlador implements ActionListener {
 			vp.getContentPane().add(pep);
 			vp.getContentPane().repaint();
 			vp.getContentPane().revalidate();
+			this.RefreshTable();
 			
 		}
 
@@ -112,6 +116,11 @@ public class Controlador implements ActionListener {
 			vp.getContentPane().revalidate();
 			
 			
+		}
+		
+		private void RefreshTable() {
+
+			this.pep.setDefaultListModel(pNeg.readAllDFL());
 		}
 
 		public void inicializar()

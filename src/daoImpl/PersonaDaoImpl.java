@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
+
 import dao.PersonaDao;
 import entidad.Persona;
 
@@ -113,6 +115,28 @@ public class PersonaDaoImpl implements PersonaDao
 			while(resultSet.next())
 			{
 				personas.add(getPersona(resultSet));
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return personas;
+	}
+	
+	public DefaultListModel<Persona> readAllDFL()
+	{
+		PreparedStatement statement;
+		ResultSet resultSet; //Guarda el resultado de la query
+		DefaultListModel<Persona> personas = new DefaultListModel<Persona>();
+		Conexion conexion = Conexion.getConexion();
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(readall);
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+				personas.addElement(getPersona(resultSet));
 			}
 		} 
 		catch (SQLException e) 
