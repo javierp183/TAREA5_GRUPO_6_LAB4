@@ -57,11 +57,7 @@ public class PanelEliminarPersona extends JPanel {
 
 	public void setDefaultListModel(DefaultListModel<Persona> listModelRecibido)
 	{
-		list_1.setModel(listModelRecibido);
-		
-		//FIXME: Hay que arreglar en el controlador o acá, cómo asignarle la lista de personas que viene
-		//De la DB para pasarlo al default list model..
-		
+		list_1.setModel(listModelRecibido);	
 	}
 	
 	public void mostrarMensaje(String mensaje)

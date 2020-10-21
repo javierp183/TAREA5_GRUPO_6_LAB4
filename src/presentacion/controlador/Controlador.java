@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
 
 import entidad.Persona;
 import negocio.PersonaNegocio;
@@ -50,8 +51,22 @@ public class Controlador implements ActionListener {
 			//Eventos del panel Eliminar Personas
 			this.pep.getBtnEliminar().addActionListener(a->EventoClickBtnEliminar_PanelEliminarPersonas(a));
 			
+			//Eventos del panel Modificar Personas
+			this.pmp.getList().addListSelectionListener(a->EventoClickEnJList_PanelModificar(a));
+			
 		}
 		
+
+		private void EventoClickEnJList_PanelModificar(ListSelectionEvent a) {
+			if(this.pmp.getList().getSelectedIndex()!=-1) {
+				Persona p = new Persona();
+				p = (Persona)this.pmp.getList().getSelectedValue();
+				this.pmp.getTxtDni().setText(p.getDni());
+				this.pmp.getTxtApellido().setText(p.getApellido());
+				this.pmp.getTxtNombre().setText(p.getNombre());
+			}
+		}
+
 
 		private void EventoClickBtn_PanelAgregarPersonas(ActionEvent a) {
 			
@@ -99,6 +114,7 @@ public class Controlador implements ActionListener {
 			vp.getContentPane().add(pmp);
 			vp.getContentPane().repaint();
 			vp.getContentPane().revalidate();
+			this.RefreshTableModify();
 			
 		}
 
@@ -126,7 +142,11 @@ public class Controlador implements ActionListener {
 
 			this.pep.setDefaultListModel(pNeg.readAllDFL());
 		}
-
+		
+		private void RefreshTableModify() {
+			this.pmp.setDefaultListModel(pNeg.readAllDFL());
+		}
+		
 		private void EventoClickBtnEliminar_PanelEliminarPersonas(ActionEvent a) {
 			
 			Persona p = new Persona();
