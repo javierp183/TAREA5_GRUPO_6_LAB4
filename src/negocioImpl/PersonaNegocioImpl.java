@@ -37,8 +37,8 @@ public class PersonaNegocioImpl implements PersonaNegocio{
 	
 	
 	@Override
-	public boolean modify(Persona persona) {
-		return pdao.modify(persona);
+	public boolean modify(String Dni,Persona persona) {
+		return pdao.modify(Dni, persona);
 	}
 
 

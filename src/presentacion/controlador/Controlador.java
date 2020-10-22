@@ -27,6 +27,8 @@ public class Controlador implements ActionListener {
 	private PanelModificarPersona pmp;
 	private PersonaNegocio pNeg;
 	private JList<Persona> list;
+	private static String DniAnterior;
+	private Persona p;
 
 		public Controlador(VentanaPrincipal vp, PersonaNegocio pNeg) {
 			this.vp = vp;
@@ -53,17 +55,40 @@ public class Controlador implements ActionListener {
 			
 			//Eventos del panel Modificar Personas
 			this.pmp.getList().addListSelectionListener(a->EventoClickEnJList_PanelModificar(a));
+			this.pmp.getBtnAceptar().addActionListener(a->EventoClickBtnAceptar_PanelModificarPersona(a));
 			
 		}
 		
 
+		private void EventoClickBtnAceptar_PanelModificarPersona(ActionEvent a) {
+			if(this.pmp.getTxtDni().getText().isEmpty()) { 
+				this.pmp.mostrarMensaje("Por favor completar el DNI");
+			}else if (this.pmp.getTxtNombre().getText().isEmpty()){
+				this.pmp.mostrarMensaje("Por favor completar el Nombre");
+			}else if (this.pmp.getTxtApellido().getText().isEmpty()){
+				this.pmp.mostrarMensaje("Por favor completar el Apellido");
+			}else {
+				p = new Persona(this.pmp.getTxtDni().getText(),this.pmp.getTxtNombre().getText(),this.pmp.getTxtApellido().getText());
+				Boolean exito = pNeg.modify(DniAnterior,p);
+				if(exito == true) {
+					this.pmp.mostrarMensaje("Registro modificado con éxito!");
+					this.RefreshTableModify();
+				}else {
+					this.pmp.mostrarMensaje("Hubo un error, intente más tarde...");
+				}
+			}
+			
+			
+		}
+
+
 		private void EventoClickEnJList_PanelModificar(ListSelectionEvent a) {
 			if(this.pmp.getList().getSelectedIndex()!=-1) {
-				Persona p = new Persona();
 				p = (Persona)this.pmp.getList().getSelectedValue();
 				this.pmp.getTxtDni().setText(p.getDni());
 				this.pmp.getTxtApellido().setText(p.getApellido());
 				this.pmp.getTxtNombre().setText(p.getNombre());
+				this.DniAnterior = pmp.getTxtDni().getText();
 			}
 		}
 
@@ -82,7 +107,7 @@ public class Controlador implements ActionListener {
 				String Apellido = pap.getTxtApellido().getText();
 				String Dni = pap.getTxtDni().getText();
 				
-				Persona p = new Persona(Dni,Nombre,Apellido);
+				p = new Persona(Dni,Nombre,Apellido);
 				boolean inserto = pNeg.insert(p);
 				if(inserto == true) {
 					pap.mostrarMensaje("Persona ingresada con éxito!");
@@ -149,7 +174,7 @@ public class Controlador implements ActionListener {
 		
 		private void EventoClickBtnEliminar_PanelEliminarPersonas(ActionEvent a) {
 			
-			Persona p = new Persona();
+			p = new Persona();
 			p = (Persona)this.pep.getList().getSelectedValue();
 			Boolean exito = pNeg.delete(p);
 			if(exito == true) {

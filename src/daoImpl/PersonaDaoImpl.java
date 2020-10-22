@@ -72,7 +72,8 @@ public class PersonaDaoImpl implements PersonaDao
 		return isdeleteExitoso;
 	}
 	
-	public boolean modify(Persona p) {
+	@Override
+	public boolean modify(String Dni, Persona p) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -82,7 +83,7 @@ public class PersonaDaoImpl implements PersonaDao
 			statement.setString(1, p.getDni());
 			statement.setString(2, p.getNombre());
 			statement.setString(3, p.getApellido());
-			statement.setString(4, p.getDni());
+			statement.setString(4, Dni);
 			if(statement.executeUpdate() > 0)
 			{
 				conexion.commit();
@@ -153,4 +154,6 @@ public class PersonaDaoImpl implements PersonaDao
 		String apellido = resultSet.getString("Apellido");
 		return new Persona(dni, nombre, apellido);
 	}
+
+	
 }

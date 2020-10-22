@@ -21,8 +21,16 @@ public class PanelModificarPersona extends JPanel {
 	private JTextField txtNombre;
 	private JButton btnAceptar;
 	private JList list;
-
+	private static Persona pAnterior;
 	
+	public Persona getpAnterior() {
+		return pAnterior;
+	}
+
+	public void setpAnterior(Persona pAnterior) {
+		this.pAnterior = pAnterior;
+	}
+
 	public JList getList() {
 		return list;
 	}
@@ -40,7 +48,7 @@ public class PanelModificarPersona extends JPanel {
 		panel.setLayout(null);
 		
 		JLabel lblUsuario = new JLabel("Seleccione el usuario que desea modificar");
-		lblUsuario.setBounds(99, 0, 216, 14);
+		lblUsuario.setBounds(103, 6, 216, 14);
 		panel.add(lblUsuario);
 		
 		JLabel lblNombre = new JLabel("Nombre");
@@ -77,6 +85,8 @@ public class PanelModificarPersona extends JPanel {
 		list = new JList();
 		list.setBounds(31, 31, 363, 136);
 		panel.add(list);
+		
+		pAnterior = new Persona();
 
 	}
 	
