@@ -1,15 +1,19 @@
 package presentacion.vista;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTree;
-import javax.swing.JList;
+import javax.swing.table.DefaultTableModel;
+
+import entidad.Persona;
+
+import java.util.List;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
+import javax.swing.JScrollPane;
 
 public class PanelListarPersonas extends JPanel {
+	private DefaultTableModel modelo;
 	private JTable table;
 
 	/**
@@ -24,11 +28,38 @@ public class PanelListarPersonas extends JPanel {
 		panel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(71, 28, 300, 187);
+		scrollPane.setBounds(60, 41, 335, 217);
 		panel.add(scrollPane);
 		
-		table = new JTable();
+		modelo = new DefaultTableModel();
+		table = new JTable(modelo);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nombre", "Apellido", "Dni"
+			}
+		));
 		scrollPane.setViewportView(table);
+
+	}
+	
+	public void setDefaultListModel(List<Persona> listModelRecibido)
+	{
+		int numCols = table.getModel().getColumnCount();
+		
+		for (Persona item : listModelRecibido) {
+			
+		Object [] fila = new Object[numCols]; 
+        
+		 fila[0] = item.getNombre();
+		 fila[1] = item.getApellido();
+		 fila[2] = item.getDni();
+		 
+		 ((DefaultTableModel) table.getModel()).addRow(fila);
+		}
+
+
 
 	}
 	

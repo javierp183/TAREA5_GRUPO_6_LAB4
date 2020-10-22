@@ -2,6 +2,8 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -49,6 +51,33 @@ public class Controlador implements ActionListener {
 			
 			//Evento del panel agregar personas
 			this.pap.getBtnAceptar().addActionListener(a->EventoClickBtn_PanelAgregarPersonas(a));
+			this.pap.getTxtDni().addKeyListener((new KeyAdapter() {
+	            public void keyTyped(KeyEvent e) {
+	                char caracter = e.getKeyChar();
+	                if (((caracter < '0') || (caracter > '9')))
+	                {
+	                    e.consume();
+	                }
+	            }
+	        }));
+			this.pap.getTxtApellido().addKeyListener((new KeyAdapter() {
+	            public void keyTyped(KeyEvent e) {
+	                char caracter = e.getKeyChar();
+	                if (((caracter < 'a') || (caracter > 'z')))
+	                {
+	                    e.consume();
+	                }
+	            }
+	        }));
+			this.pap.getTxtNombre().addKeyListener((new KeyAdapter() {
+	            public void keyTyped(KeyEvent e) {
+	                char caracter = e.getKeyChar();
+	                if (((caracter < 'a') || (caracter > 'z')))
+	                {
+	                    e.consume();
+	                }
+	            }
+	        }));
 			
 			//Eventos del panel Eliminar Personas
 			this.pep.getBtnEliminar().addActionListener(a->EventoClickBtnEliminar_PanelEliminarPersonas(a));
@@ -56,6 +85,34 @@ public class Controlador implements ActionListener {
 			//Eventos del panel Modificar Personas
 			this.pmp.getList().addListSelectionListener(a->EventoClickEnJList_PanelModificar(a));
 			this.pmp.getBtnAceptar().addActionListener(a->EventoClickBtnAceptar_PanelModificarPersona(a));
+			this.pmp.getTxtDni().addKeyListener((new KeyAdapter() {
+	            public void keyTyped(KeyEvent e) {
+	                char caracter = e.getKeyChar();
+	                if (((caracter < '0') || (caracter > '9')))
+	                {
+	                    e.consume();
+	                }
+	            }
+	        }));
+			this.pmp.getTxtApellido().addKeyListener((new KeyAdapter() {
+	            public void keyTyped(KeyEvent e) {
+	                char caracter = e.getKeyChar();
+	                if (((caracter < 'a') || (caracter > 'z')))
+	                {
+	                    e.consume();
+	                }
+	            }
+	        }));
+			this.pmp.getTxtNombre().addKeyListener((new KeyAdapter() {
+	            public void keyTyped(KeyEvent e) {
+	                char caracter = e.getKeyChar();
+	                if (((caracter < 'a') || (caracter > 'z')))
+	                {
+	                    e.consume();
+	                }
+	            }
+	        }));
+			
 			
 		}
 		
@@ -130,7 +187,7 @@ public class Controlador implements ActionListener {
 			vp.getContentPane().add(plp);
 			vp.getContentPane().repaint();
 			vp.getContentPane().revalidate();
-			
+			this.GenerateTable();
 		}
 
 		private void EventoClickMenu_AbrirPanel_ModificarPersona(ActionEvent a) {
@@ -170,6 +227,10 @@ public class Controlador implements ActionListener {
 		
 		private void RefreshTableModify() {
 			this.pmp.setDefaultListModel(pNeg.readAllDFL());
+		}
+		
+		private void GenerateTable() {
+			this.plp.setDefaultListModel(pNeg.readAll());
 		}
 		
 		private void EventoClickBtnEliminar_PanelEliminarPersonas(ActionEvent a) {
