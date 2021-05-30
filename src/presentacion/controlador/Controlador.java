@@ -4,16 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
+
 import javax.swing.event.ListSelectionEvent;
 
 import entidad.Persona;
 import negocio.PersonaNegocio;
-import negocioImpl.PersonaNegocioImpl;
 import presentacion.vista.PanelAgregarPersona;
 import presentacion.vista.PanelEliminarPersona;
 import presentacion.vista.PanelListarPersonas;
@@ -28,8 +24,7 @@ public class Controlador implements ActionListener {
 	private PanelListarPersonas plp;
 	private PanelModificarPersona pmp;
 	private PersonaNegocio pNeg;
-	private JList<Persona> list;
-	private static String DniAnterior;
+	private String DniAnterior;
 	private Persona p;
 
 		public Controlador(VentanaPrincipal vp, PersonaNegocio pNeg) {

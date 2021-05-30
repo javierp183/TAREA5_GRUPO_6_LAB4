@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.swing.DefaultListModel;
 
-import dao.PersonaDao;
 import daoImpl.PersonaDaoImpl;
 import entidad.Persona;
 import negocio.PersonaNegocio;
